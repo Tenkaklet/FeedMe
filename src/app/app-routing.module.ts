@@ -6,12 +6,11 @@ import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 
 
-// Todo: Add a redirectUnauthorizedToLogin function
 
-// const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['welcome']);
+const redirecToWelcome = () => redirectUnauthorizedTo(['welcome']);
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', component: AppComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirecToWelcome } },
   { path: 'welcome', component: WelcomeComponent, },
   { path: 'home', component: HomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: null }}  
 ];
