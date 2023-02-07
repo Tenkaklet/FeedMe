@@ -8,17 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(public auth: AngularFireAuth, private router: Router) {
-    console.log('hi');
-    
-    this.auth.authState.subscribe(user => {
-      console.log(user);
+  constructor(private auth: AngularFireAuth, private router: Router) {
+    // this.auth.authState.subscribe(user => {
+    //   console.log(user);
       
-      if (user) {
-        this.router.navigate(['home']);
-      } else {
-        this.router.navigate(['welcome'])
-      }
-    });
+    //   if (!user) {
+    //     this.router.navigate(['welcome']);
+    //   } else {
+    //     // todo: if the user has sign up and they are past the welcome screen. Go directly to home.
+    //     this.router.navigate(['registration']);
+    //   }
+      
+    // });
   }
 }

@@ -14,8 +14,8 @@ const redirectAuthedToHome = () => redirectLoggedInTo(['home']);
 const routes: Routes = [
   { path: '', component: AppComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirecToWelcome } },
   { path: 'welcome', component: WelcomeComponent, },
-  {path: 'registration', component: RegistrationComponent, canActivate: [], data: { authGuardPipe: null }},
-  { path: 'home', component: HomeComponent, data: { authGuardPipe: redirectAuthedToHome }}  
+  {path: 'registration', component: RegistrationComponent, data: { authGuardPipe: null }},
+  { path: 'home', component: HomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectAuthedToHome }}  
 ];
 
 @NgModule({
