@@ -13,6 +13,6 @@ export class WelcomeComponent {
 
   // Route to Registration page.
   toRegistration() {
-    this.router.navigate(['home']);
+    this.router.navigate(['registration']);
   }
 }

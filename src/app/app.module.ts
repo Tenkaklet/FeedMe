@@ -8,6 +8,7 @@ import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from './environments/environment';
 import { HomeComponent } from './home/home.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -25,6 +26,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AppComponent,
     WelcomeComponent,
     HomeComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
