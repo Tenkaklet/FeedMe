@@ -1,10 +1,15 @@
 # FeedMe
+[![CodeFactor](https://www.codefactor.io/repository/github/tenkaklet/feedme/badge)](https://www.codefactor.io/repository/github/tenkaklet/feedme)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6da915fdddf243e896def7aa5a22b36d)](https://www.codacy.com/gh/Kjellkod-och-Co/Lively-Deals/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kjellkod-och-Co/Lively-Deals&amp;utm_campaign=Badge_Grade)
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Technologies](#technologies)
-3. [Setup](#setup)
-4. [Recommended Setup](#recommended)
+- [FeedMe](#feedme)
+	- [Table of Contents](#table-of-contents)
+	- [Introduction](#introduction)
+		- [Premise](#premise)
+	- [Technologies](#technologies)
+	- [Setup](#setup)
+	- [Recommended](#recommended)
 
 
 ## Introduction
@@ -25,11 +30,11 @@ Here are some of the technologies used:
 | Ripple UI         	| [Homepage](https://www.ripple-ui.com/)
 
 
-| Additonal Tech        | Links                                     	|
+| Additonal Tech           	| Links                                     	|
 |-------------------	|-------------------------------------------	|
-| Angular       	    | [Homepage](https://angular.io/)       	|
-| Tauri 	            | [Homepage](https://tauri.app/) 	|
-| Firebase         	  | [Homepage](https://firebase.google.com/)
+| Angular       	| [Homepage](https://angular.io/)       	|
+| Tauri 	| [Homepage](https://tauri.app/) 	|
+| Firebase         	| [Homepage](https://firebase.google.com/)
 
 
 ## Setup
