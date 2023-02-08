@@ -17,6 +17,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
   ],
+  signInSuccessUrl: '/home'
 };
 
 

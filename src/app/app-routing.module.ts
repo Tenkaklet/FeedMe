@@ -9,13 +9,13 @@ import { RegistrationComponent } from './registration/registration.component';
 
 
 const redirecToWelcome = () => redirectUnauthorizedTo(['welcome']);
-const redirectAuthedToHome = () => redirectLoggedInTo(['home']);
+const redirectAuthedToRegistration = () => redirectLoggedInTo(['registration']);
 
 const routes: Routes = [
   { path: '', component: AppComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirecToWelcome } },
   { path: 'welcome', component: WelcomeComponent, },
-  {path: 'registration', component: RegistrationComponent, data: { authGuardPipe: null }},
-  { path: 'home', component: HomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectAuthedToHome }}  
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AngularFireAuthGuard] }
 ];
 
 @NgModule({

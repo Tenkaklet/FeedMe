@@ -28,11 +28,13 @@ export class RegistrationComponent implements OnInit {
   }
   // sign in success
   signInSuccess(event: FirebaseUISignInSuccessWithAuthResult) {
+    console.log('success', event);
     
+    this.router.navigate(['home']);
   }
 
   // sign in failure
   signInFailure(event: FirebaseUISignInFailure) {
-    
+    console.error('Error: ', event);
   }
 }

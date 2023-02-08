@@ -8,9 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(private auth: AngularFireAuth, private router: Router) {}
+  user: {} | null = {};
+
+  constructor(public auth: AngularFireAuth, private router: Router) {}
   ngOnInit(): void {
     console.log('in home');
+    this.auth.user.subscribe(u => {
+      this.user = u;
+    });
   }
 
   logOut() {
