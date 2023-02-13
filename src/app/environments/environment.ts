@@ -5,7 +5,8 @@ export const environment = {
         projectId: "feedme-8f76c",
         storageBucket: "feedme-8f76c.appspot.com",
         messagingSenderId: "180397014353",
-        appId: "1:180397014353:web:e48203d89ccb90a07ee770",
-        measurementId: "G-E6KFFN8C9J"
-      },
-  };
+        appId: "1:180397014353:web:28cbaab5beb6112e7ee770",
+        measurementId: "G-94DZJZMJNM"
+    },
+    production: true,
+};

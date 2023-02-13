@@ -9,15 +9,18 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from './environments/environment';
 import { HomeComponent } from './home/home.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { AngularFireAuthModule, USE_EMULATOR as USE_AUTH_EMULATOR } from "@angular/fire/compat/auth";
+import { FormsModule } from "@angular/forms";
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+      'microsoft.com',
   ],
-  signInSuccessUrl: '/home'
 };
 
 
@@ -36,6 +39,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     HttpClientJsonpModule,
     AngularFireModule.initializeApp(environment.firebase),
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
 
   logOut() {
     this.auth.signOut();
+    this.router.navigate(['registration']);
   }
 
 }

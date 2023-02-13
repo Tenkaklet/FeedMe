@@ -13,7 +13,7 @@ export class AppComponent {
       console.log(user);
       
       if (!user) {
-        this.router.navigate(['welcome']);
+        // this.router.navigate(['welcome']);
       } else {
         // todo: if the user has sign up and they are past the welcome screen. Go directly to home.
         this.router.navigate(['home']);
