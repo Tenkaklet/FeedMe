@@ -4,7 +4,14 @@ import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { NgForm } from '@angular/forms';
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithRedirect, signInWithEmailAndPassword } from "firebase/auth";
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
+
+export interface User {
+  uuid: string;
+  verifiedEmail: boolean;
+}
 
 @Component({
   selector: 'app-registration',
@@ -16,10 +23,13 @@ export class RegistrationComponent implements OnInit {
   password: string = '';
   forgotEmail: string = '';
   error: boolean = false;
+  success: boolean = false;
   errorMsg: string = '';
-  
-  constructor(private auth: AngularFireAuth, public router: Router) {
-    
+
+  userCollection: AngularFirestoreCollection;
+
+  constructor(private auth: AngularFireAuth, public router: Router, private afs: AngularFirestore) {
+    this.userCollection = this.afs.collection('users');
   }
 
   ngOnInit(): void {
@@ -52,12 +62,16 @@ export class RegistrationComponent implements OnInit {
     .then((data: any) => {
       console.log('the data of user ', data);
 
+
       data.user.sendEmailVerification()
-      .then((res: any) => {
+      .then((res: any) => { 
         console.log('Email sent ');
+        this.success = true;
       })
       .catch((err: any) => {
         console.log('Error ', err);
+        this.error = true;
+        this.errorMsg = err.message;
         
       })
       

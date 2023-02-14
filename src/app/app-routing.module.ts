@@ -10,6 +10,7 @@ import { RegistrationComponent } from './registration/registration.component';
 const redirecToWelcome = () => redirectUnauthorizedTo(['welcome']);
 const redirectAuthedToHome = () => redirectLoggedInTo(['home']);
 
+
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'welcome', component: WelcomeComponent, },

@@ -12,8 +12,8 @@ export class AppComponent {
     this.auth.authState.subscribe(user => {
       console.log(user);
       
-      if (!user) {
-        // this.router.navigate(['welcome']);
+      if (!user?.emailVerified) {
+        this.router.navigate(['registration']);
       } else {
         // todo: if the user has sign up and they are past the welcome screen. Go directly to home.
         this.router.navigate(['home']);
