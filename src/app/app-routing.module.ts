@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo, loggedIn } from '@angular/fire/compat/auth-guard';
 import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 
-// Todo: Add a redirectUnauthorizedToLogin function
+const redirecToWelcome = () => redirectUnauthorizedTo(['welcome']);
+const redirectAuthedToHome = () => redirectLoggedInTo(['home']);
 
-// const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['welcome']);
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', component: WelcomeComponent },
   { path: 'welcome', component: WelcomeComponent, },
-  { path: 'home', component: HomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: null }}  
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AngularFireAuthGuard] }
 ];
 
 @NgModule({

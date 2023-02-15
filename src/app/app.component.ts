@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +8,17 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(public auth: AngularFireAuth) {
-    this.loggedIn();
-  }
-
-
-  loggedIn() {
-    this.auth.onAuthStateChanged(user => {
-      if (user) {
-        console.log('User is signed in');
+  constructor(private auth: AngularFireAuth, private router: Router) {
+    this.auth.authState.subscribe(user => {
+      console.log(user);
+      
+      if (!user?.emailVerified) {
+        this.router.navigate(['registration']);
       } else {
-        console.log('User is not signed in');
+        // todo: if the user has sign up and they are past the welcome screen. Go directly to home.
+        this.router.navigate(['home']);
       }
-    })
+      
+    });
   }
 }
