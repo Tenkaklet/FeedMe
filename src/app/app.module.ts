@@ -12,6 +12,10 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AngularFireAuthModule, USE_EMULATOR as USE_AUTH_EMULATOR } from "@angular/fire/compat/auth";
 import { FormsModule } from "@angular/forms";
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { MealPlanerComponent } from './meal-planer/meal-planer.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { ProfileComponent } from './profile/profile.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -32,6 +36,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     WelcomeComponent,
     HomeComponent,
     RegistrationComponent,
+    MealPlanerComponent,
+    CalendarComponent,
+    ProfileComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,

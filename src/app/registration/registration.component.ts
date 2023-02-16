@@ -33,7 +33,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('inside register');
+    
   }
 
   loginToGoogle() {
@@ -60,9 +60,7 @@ export class RegistrationComponent implements OnInit {
   signupUsual(form: NgForm) {
     this.auth.createUserWithEmailAndPassword(this.email, this.password)
     .then((data: any) => {
-      console.log('the data of user ', data);
-
-
+      
       data.user.sendEmailVerification()
       .then((res: any) => { 
         this.error = false;
