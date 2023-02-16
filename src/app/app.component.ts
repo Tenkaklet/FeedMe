@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 export class AppComponent {
   constructor(private auth: AngularFireAuth, private router: Router) {
     this.auth.authState.subscribe(user => {
-      console.log(user);
-      
       if (!user?.emailVerified) {
         this.router.navigate(['registration']);
       } else {
