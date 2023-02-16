@@ -1,4 +1,5 @@
 # FeedMe
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1a3902c38ef64048bc5d86528c81c9bb)](https://app.codacy.com/gh/Tenkaklet/FeedMe?utm_source=github.com&utm_medium=referral&utm_content=Tenkaklet/FeedMe&utm_campaign=Badge_Grade_Settings)
 [![CodeFactor](https://www.codefactor.io/repository/github/tenkaklet/feedme/badge)](https://www.codefactor.io/repository/github/tenkaklet/feedme)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6da915fdddf243e896def7aa5a22b36d)](https://www.codacy.com/gh/Kjellkod-och-Co/Lively-Deals/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kjellkod-och-Co/Lively-Deals&amp;utm_campaign=Badge_Grade)
 
