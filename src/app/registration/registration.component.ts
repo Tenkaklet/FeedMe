@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { NgForm } from '@angular/forms';
-import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithRedirect, signInWithEmailAndPassword } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithRedirect, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
@@ -65,11 +65,10 @@ export class RegistrationComponent implements OnInit {
 
       data.user.sendEmailVerification()
       .then((res: any) => { 
-        console.log('Email sent ');
+        this.error = false;
         this.success = true;
       })
       .catch((err: any) => {
-        console.log('Error ', err);
         this.error = true;
         this.errorMsg = err.message;
         
@@ -90,6 +89,7 @@ export class RegistrationComponent implements OnInit {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email.value, password.value)
     .then((data) => {
+      this.error = false;
       this.router.navigate(['home']);
     })
     .catch(err => {
@@ -97,5 +97,18 @@ export class RegistrationComponent implements OnInit {
       this.errorMsg = err.message;
     })
     
+  }
+
+  resendPassword(form: NgForm) {
+    const { email } = form.form.controls;
+    const auth = getAuth();
+    this.auth.sendPasswordResetEmail(email.value)
+    .then(() => {
+      console.log('email sent');
+      this.success = true;
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 }
