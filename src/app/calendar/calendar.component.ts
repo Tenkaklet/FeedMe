@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CalendarOptions, DateSelectArg, EventClickArg } from '@fullcalendar/core'; // useful for typechecking
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import listPlugin from '@fullcalendar/list';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import { message } from '@tauri-apps/api/dialog';
 
 @Component({
@@ -13,7 +15,12 @@ export class CalendarComponent {
   showModal = false;
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
-    plugins: [ dayGridPlugin, interactionPlugin ],
+    plugins: [ dayGridPlugin, interactionPlugin, listPlugin, timeGridPlugin ],
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth, dayGridWeek, timeGridWeek, timeGridDay, listWeek',
+    },
     select: this.handleSelect.bind(this),
     eventClick: this.handleClick.bind(this),
     selectable: true,
