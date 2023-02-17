@@ -12,7 +12,15 @@ export class HomeComponent implements OnInit {
 
   constructor(public auth: AngularFireAuth, private router: Router) {}
   ngOnInit(): void {
-    console.log('in home');
+    this.auth.authState.subscribe(user => {
+      if (!user?.emailVerified) {
+        this.router.navigate(['registration']);
+      } else {
+        // todo: if the user has sign up and they are past the welcome screen. Go directly to home.
+        this.router.navigate(['home']);
+      }
+      
+    });
     this.auth.user.subscribe(u => {
       this.user = u;
     });
