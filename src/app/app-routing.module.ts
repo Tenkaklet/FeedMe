@@ -17,10 +17,13 @@ const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'welcome', component: WelcomeComponent, },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AngularFireAuthGuard] },
-  { path: 'meal-planner', component: MealPlanerComponent, canActivate: [AngularFireAuthGuard] },
-  { path: 'calendar', component: CalendarComponent, canActivate: [AngularFireAuthGuard] },
-  { path: 'profile', component: MealPlanerComponent, canActivate: [AngularFireAuthGuard] },
+  {
+    path: 'home', component: HomeComponent, canActivate: [AngularFireAuthGuard], children: [
+      { path: 'meal-planner', component: MealPlanerComponent, canActivate: [AngularFireAuthGuard] },
+      { path: 'calendar', component: CalendarComponent, canActivate: [AngularFireAuthGuard] },
+      { path: 'profile', component: MealPlanerComponent, canActivate: [AngularFireAuthGuard] },
+    ]
+  },
 ];
 
 @NgModule({
