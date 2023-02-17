@@ -16,6 +16,7 @@ import { MealPlanerComponent } from './meal-planer/meal-planer.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -40,6 +41,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     CalendarComponent,
     ProfileComponent,
     NavigationComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MealPlanerComponent } from './meal-planer/meal-planer.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { ProfileComponent } from './profile/profile.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const redirecToWelcome = () => redirectUnauthorizedTo(['welcome']);
@@ -21,7 +23,8 @@ const routes: Routes = [
     path: 'home', component: HomeComponent, canActivate: [AngularFireAuthGuard], children: [
       { path: 'meal-planner', component: MealPlanerComponent, canActivate: [AngularFireAuthGuard] },
       { path: 'calendar', component: CalendarComponent, canActivate: [AngularFireAuthGuard] },
-      { path: 'profile', component: MealPlanerComponent, canActivate: [AngularFireAuthGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [AngularFireAuthGuard] },
+      { path: '', component: DashboardComponent, canActivate: [AngularFireAuthGuard] },
     ]
   },
 ];
