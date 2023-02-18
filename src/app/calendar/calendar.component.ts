@@ -19,7 +19,7 @@ export class CalendarComponent {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth, dayGridWeek, timeGridWeek, timeGridDay, listWeek',
+      right: 'dayGridMonth dayGridWeek timeGridDay listWeek',
     },
     select: this.handleSelect.bind(this),
     eventClick: this.handleClick.bind(this),
