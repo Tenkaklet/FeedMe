@@ -1,2 +1,18 @@
+<nav class="flex justify-end p-4">
+    <label class="btn btn-outline-primary" for="add-modal">Add Meal</label>
+</nav>
+<full-calendar [options]="calendarOptions"></full-calendar>
 
-<p>calendar works!</p>
+<input class="modal-state" id="add-modal" type="checkbox" />
+<div class="modal">
+	<label class="modal-overlay"></label>
+	<div class="modal-content flex flex-col gap-5">
+		<label for="add-modal" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
+		<h2 class="text-xl">Modal title 3</h2>
+		<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dolorum voluptate ratione dicta. Maxime cupiditate, est commodi consectetur earum iure, optio, obcaecati in nulla saepe maiores nobis iste quasi alias!</span>
+		<div class="flex gap-3">
+			<button class="btn btn-error btn-block">Delete</button>
+			<button class="btn btn-block">Cancel</button>
+		</div>
+	</div>
+</div>
