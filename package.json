@@ -30,6 +30,7 @@
     "@fullcalendar/list": "^6.1.4",
     "@fullcalendar/timegrid": "^6.1.4",
     "@tauri-apps/api": "^1.2.0",
+    "@vectopus/atlas-icons": "^0.0.5",
     "dayjs": "^1.11.7",
     "firebase": "9.16.0",
     "firebaseui": "^6.0.2",
