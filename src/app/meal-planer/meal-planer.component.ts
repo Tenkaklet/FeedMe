@@ -18,7 +18,7 @@ export class MealPlanerComponent implements OnInit {
 
   onSelect(type: any) {
     this.mealSelection = type.target.value;
-    this.getDataForMeal(this.mealSelection);
+    // this.getDataForMeal(this.mealSelection);
   }
 
   getDataForMeal(selection: string) {
