@@ -9,4 +9,9 @@ export const environment = {
         measurementId: "G-94DZJZMJNM"
     },
     production: true,
+    edamamConfig: {
+        api_url: 'https://api.edamam.com/api/recipes/v2?type=public',
+        app_id: '7842901e',
+        app_key: '69cceb9058e1e683b8731828e422e9ae',
+    },
 };

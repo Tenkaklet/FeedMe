@@ -8,6 +8,7 @@ import { EdamamService } from '../edamam.service';
 })
 export class MealPlanerComponent implements OnInit {
   mealSelection = '';
+  mealResults: any;
   
   constructor(private edamam: EdamamService) {
   }
@@ -18,14 +19,13 @@ export class MealPlanerComponent implements OnInit {
 
   onSelect(type: any) {
     this.mealSelection = type.target.value;
-    // this.getDataForMeal(this.mealSelection);
+    //this.getDataForMeal(this.mealSelection); // ! This makes an API Call to Edaman
   }
 
   getDataForMeal(selection: string) {
-    console.info('the selection ', selection);
     this.edamam.getRecipesByMeal(selection)
     .subscribe(u => {
-      console.log('the edamam api data is ', u);
+      this.mealResults = u;
     });
   }
 }
