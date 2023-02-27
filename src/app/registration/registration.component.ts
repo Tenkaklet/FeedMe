@@ -60,7 +60,9 @@ export class RegistrationComponent implements OnInit {
   signupUsual(form: NgForm) {
     this.auth.createUserWithEmailAndPassword(this.email, this.password)
     .then((data: any) => {
-      
+      const userUID = data.user.multiFactor.user.uid;
+      this.userCollection.doc(data.user.multiFactor.user.uid).set({userId: userUID}).then(() => console.log('saved'));
+      window.localStorage.setItem('userId', userUID);
       data.user.sendEmailVerification()
       .then((res: any) => { 
         this.error = false;
@@ -72,7 +74,6 @@ export class RegistrationComponent implements OnInit {
         
       })
       
-      //this.router.navigate(['home']);
     })
     .catch(err => {
       this.error = true;
@@ -86,7 +87,9 @@ export class RegistrationComponent implements OnInit {
     
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email.value, password.value)
-    .then((data) => {
+    .then((data: any) => {
+      const userUID = data.user.multiFactor.user.uid;
+      window.localStorage.setItem('userId', userUID);
       this.error = false;
       this.router.navigate(['home']);
     })
