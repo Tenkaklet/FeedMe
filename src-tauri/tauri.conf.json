@@ -41,6 +41,9 @@
         "message": true,
         "open": true,
         "save": true
+      },
+      "notification": {
+        "all": true
       }
     },
     "bundle": {

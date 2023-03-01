@@ -88,7 +88,7 @@ export class RegistrationComponent implements OnInit {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email.value, password.value)
     .then((data: any) => {
-      const userUID = data.user.multiFactor.user.uid;
+      const userUID = data.user.uid;
       window.localStorage.setItem('userId', userUID);
       this.error = false;
       this.router.navigate(['home']);

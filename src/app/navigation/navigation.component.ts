@@ -13,6 +13,7 @@ export class NavigationComponent {
 
   logOut() {
     this.auth.signOut();
+    window.localStorage.clear();
     this.router.navigate(['registration']);
   }
 }
