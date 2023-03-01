@@ -1,2 +1,13 @@
 
 <p>Hello Meal Planner</p>
+<p>select meal type</p>
+<select class="select select-ghost-primary" (change)="onSelect($event)">
+	<option value="breakfast">Breakfast</option>
+	<option value="lunch">Lunch</option>
+	<option value="dinner">Dinnner</option>
+</select>
+
+<pre>
+	{{mealSelection}}
+	{{mealResults | json }}
+</pre>
