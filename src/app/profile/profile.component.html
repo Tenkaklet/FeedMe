@@ -1,1 +1,14 @@
-<h1>Profile</h1>
+<h1 class="text-3xl">Profile</h1>
+
+<main class="flex flex-col justify-start w-2/12">
+    <div class="profile-avatar">
+        <img class="profile-image" [src]="profileImage">
+    <button class="btn btn-outline-success btn-xs" (click)="openDialog()">Change Avatar</button>
+    <p class="pt-2 text-center text-xs">Change Notifcation Settings</p>
+    <input type="checkbox" class="switch switch-success switch-ghost-success" (change)="onCheckChange($event)" [checked]="false" />
+    </div>
+    <div class="details">
+        <p>E-mail</p>
+        <p>{{userEmail}}</p>
+    </div>
+</main>
