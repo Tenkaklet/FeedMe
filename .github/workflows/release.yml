@@ -1,4 +1,5 @@
-name: Release
+name: FeedmePush
+
 on:
   push:
     tags:
