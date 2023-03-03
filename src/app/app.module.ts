@@ -54,6 +54,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FormsModule,
     AngularFireAuthModule,
     FullCalendarModule,
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
