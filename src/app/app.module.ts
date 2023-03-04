@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { SavedRecipesComponent } from './saved-recipes/saved-recipes.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -43,6 +44,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     ProfileComponent,
     NavigationComponent,
     DashboardComponent,
+    SavedRecipesComponent,
   ],
   imports: [
     BrowserModule,
