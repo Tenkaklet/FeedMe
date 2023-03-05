@@ -8,6 +8,6 @@ module.exports = {
       },
     },
   },
-  plugins: [require('rippleui'), require('tw-elements/dist/plugin')],
+  plugins: [require('rippleui'), require('tw-elements/dist/plugin'), require('daisyui')],
   rippleui: {},
 }
