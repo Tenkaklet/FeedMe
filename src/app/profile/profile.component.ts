@@ -19,9 +19,9 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   profileImage: any;
-  userName: string | null | undefined;
   userEmail: string | null | undefined;
   useruid: any;
+  userDisplayName:string | null | undefined;
   mySubscripton: any;
 
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth, private storage: AngularFireStorage, private spinner: NgxSpinnerService, private router: Router) {
@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
       this.useruid = data?.uid;
       this.profileImage = data?.photoURL || '../../assets/images/ninja.png';
       this.userEmail = data?.email;
-      this.userName = data?.displayName;
+      this.userDisplayName = data?.displayName;
     });
   }
 
@@ -101,5 +101,16 @@ export class ProfileComponent implements OnInit {
       const permission = await requestPermission();
       permissionGranted = permission === 'denied';
     }
+  }
+
+  // *** Changes Display name
+  changeDisplayName() {
+    console.log(this.userDisplayName);
+    this.afAuth.user.subscribe(u => {
+      u?.updateProfile({
+        displayName: this.userDisplayName
+      });
+    });
+    
   }
 }

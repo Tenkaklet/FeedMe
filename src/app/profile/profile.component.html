@@ -4,7 +4,7 @@
     <div class="profile-avatar">
         <img class="profile-image" [src]="profileImage">
         
-        <label for="profile-photo">
+        <label class="btn" for="profile-photo">
             Choose a profile Photo
             <input type="file" class="btn btn-outline-success btn-xs" (change)="openDialog($event)" id="profile-photo">
         </label>
@@ -15,5 +15,9 @@
     <div class="details">
         <p>E-mail</p>
         <p>{{userEmail}}</p>
+        <br />
+        <p>Change Display name:</p>
+        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" [(ngModel)]="userDisplayName" name="userDisplayName" />
+        <button class="btn btn-outline-success btn-xs my-1" (click)="changeDisplayName()">Save Name</button>
     </div>
 </main>
