@@ -1,1 +1,55 @@
-<p>Hej Max!</p>
+<header class="hero flex items-center justify-center">
+    <div class="hero-content text-center">
+      <div class="max-w-md">
+        <h1 class="text-5xl">{{timeOfDay}}</h1>
+        <p class="text-3xl font-bold"> {{user?.displayName}}</p>
+      </div>
+    </div>
+</header>
+
+<main>
+
+  <!-- Today's Meals -->
+  <h3 class="text-3xl mt-2 underline">Today's Meals</h3>
+  <small class="badge badge-sm">This is your meal plan for today</small>
+  <div class="mb-4"></div>
+  <section class="todays-meals-cards flex gap-4 flex-row mb-10">
+    <div class="card w-96 bg-base-100 shadow-xl" *ngFor="let meal of [1,2,3]">
+      <figure><img src="https://picsum.photos/536/354" alt="Shoes" /></figure>
+      <div class="card-body">
+        <h2 class="card-title">
+          Oatmeal
+          <div class="badge badge-flat-primary">Breakfast</div>
+        </h2>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <div class="card-actions justify-end">
+          <div class="badge badge-outline">Fiber</div> 
+          <div class="badge badge-outline">Quick n' Easy</div>
+          <button class="btn btn-xs btn-block btn-primary">View Recipe</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end today's meals -->
+  <h3 class="text-3xl mt-2 underline">Recent Meals</h3>
+  <small class="badge badge-sm">Recent meals you liked</small>
+  <section class="recent-meals mt-9 flex gap-4 flex-row">
+
+    <div class="card card-compact  bg-base-100 shadow-xl" *ngFor="let recent of [1,2,3,4]">
+      <figure><img src="https://picsum.photos/536/354" alt="Shoes" /></figure>
+      <div class="card-body">
+        <h2 class="card-title">Chili Con Carne</h2>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <div class="card-actions justify-end">
+          <div class="dropdown">
+            <label tabindex="0" class="btn btn-xs btn-primary">More options</label>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+              <li><a>Add to Calendar</a></li>
+              <li><a class="text-red-1000">Remove Meal</a></li>              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

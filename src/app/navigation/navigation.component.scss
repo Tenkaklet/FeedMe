@@ -3,3 +3,11 @@ aside {
     position: fixed;
     width: 8rem;
 }
+
+.avatar-url {
+    img {
+        width: 5.5rem;
+        height: 5.5rem;
+        border-radius: 6px;
+    }
+}

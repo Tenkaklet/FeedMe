@@ -7,7 +7,10 @@ import { isPermissionGranted, requestPermission, sendNotification } from '@tauri
 import { updateProfile, UserInfo } from 'firebase/auth';
 import { concatMap, Observable, of } from 'rxjs';
 import { ImageUploadService } from '../image-upload.service';
-import { getStorage, ref } from "firebase/storage";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NavigationEnd, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-profile',
@@ -15,11 +18,20 @@ import { getStorage, ref } from "firebase/storage";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  profileImage: string | null | undefined;
-  userName:string | null | undefined;
-  userEmail:string | null | undefined;
+  profileImage: any;
+  userEmail: string | null | undefined;
   useruid: any;
-  constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth, private storage: AngularFireStorage) {}
+  userDisplayName:string | null | undefined;
+  mySubscripton: any;
+
+  constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth, private storage: AngularFireStorage, private spinner: NgxSpinnerService, private router: Router) {
+    this.mySubscripton = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+      }
+    });
+  }
 
 
 
@@ -27,31 +39,44 @@ export class ProfileComponent implements OnInit {
     this.afAuth.user.subscribe(data => {
       this.useruid = data?.uid;
       this.profileImage = data?.photoURL || '../../assets/images/ninja.png';
-      this.userEmail = data?.email; 
-      this.userName = data?.displayName;
+      this.userEmail = data?.email;
+      this.userDisplayName = data?.displayName;
     });
   }
 
 
-// ** Selects the persons profile picture.
+  // ** Selects the persons profile picture.
   async openDialog(event: any) {
+    this.spinner.show();
     this.profileImage = event.target.files[0];
+    console.log('selected image', this.profileImage);
+    const storage = getStorage();
     const photoPath = `images/profile/${this.useruid}`;
+    const storageRef = ref(storage, photoPath);
+
+    uploadBytes(storageRef, this.profileImage)
+      .then((snapshot) => {
+        console.log('uploaded file', snapshot);
+      });
+
     const currentUser = this.afAuth.currentUser;
     const task = this.storage.upload(photoPath, this.profileImage);
     task.then((data) => {
       data.ref.getDownloadURL()
-      .then(url => {
-        this.profileImage = url;
-        currentUser.then(u => {
-          u?.updateProfile({
-            photoURL: this.profileImage,
-          });
-        })
-      });
+        .then(url => {
+          this.profileImage = url;
+          currentUser.then(u => {
+            u?.updateProfile({
+              photoURL: this.profileImage,
+            });
+          })
+        });
     });
-    
-    return(await this.afAuth.currentUser)?.updateProfile({photoURL: this.profileImage});
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 2500);
+
+    return (await this.afAuth.currentUser)?.updateProfile({ photoURL: this.profileImage });
   }
 
   //* Toggle Notifications switch */
@@ -60,21 +85,32 @@ export class ProfileComponent implements OnInit {
     const check = event.target.checked;
     const permission = await requestPermission();
 
-    if(check) {
+    if (check) {
       permissionGranted = permission === 'granted';
     } else {
       permissionGranted = permission === 'denied';
     }
-    
+
     if (permissionGranted) {
-      sendNotification({title: 'Feed Me', body: 'Notifications enabled'});
+      sendNotification({ title: 'Feed Me', body: 'Notifications enabled' });
     }
 
-    
-    if(!check) {
-      sendNotification({title: 'Feed Me', body: 'Notifications disabled'});
+
+    if (!check) {
+      sendNotification({ title: 'Feed Me', body: 'Notifications disabled' });
       const permission = await requestPermission();
       permissionGranted = permission === 'denied';
     }
+  }
+
+  // *** Changes Display name
+  changeDisplayName() {
+    console.log(this.userDisplayName);
+    this.afAuth.user.subscribe(u => {
+      u?.updateProfile({
+        displayName: this.userDisplayName
+      });
+    });
+    
   }
 }
